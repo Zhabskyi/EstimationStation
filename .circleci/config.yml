@@ -42,7 +42,7 @@ jobs:
       - cache-dependencies
       - build-app
       - persist_to_workspace:
-          root: ~/
+          root: ./
           paths:
             - dist
             - infrastructure/bin
