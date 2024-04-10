@@ -9,6 +9,12 @@ executors:
       - image: cimg/node:20.12.1
 
 commands:
+  install-pnpm:
+    steps:
+      - run:
+          name: Install pnpm
+          command: |
+            curl -fsSL https://get.pnpm.io/install.sh | sh -
   install-dependencies:
     steps:
       - run: pnpm install .
