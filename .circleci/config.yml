@@ -43,7 +43,9 @@ jobs:
       - build-app
       - persist_to_workspace:
           root: ~/
-          paths: project/build
+          paths:
+            - dist
+            - infrastructure/bin
   deploy:
     executor: aws-cli/default
     resource_class: small
