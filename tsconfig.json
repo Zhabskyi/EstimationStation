@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": ["es2020", "DOM"],
+    "module": "commonjs",
+    "target": "es2020",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "node_modules/**/*",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx"
+  ]
+}

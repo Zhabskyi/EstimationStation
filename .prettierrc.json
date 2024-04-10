@@ -1,0 +1,9 @@
+{
+  "bracketSpacing": true,
+  "printWidth": 120,
+  "doubleQuote": true,
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "endOfLine": "auto"
+}
