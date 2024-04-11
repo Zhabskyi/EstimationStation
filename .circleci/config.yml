@@ -14,9 +14,6 @@ commands:
       - run:
           name: Install pnpm package manager
           command: |
-            node -p "require('os').homedir()" # Find the home directory
-            echo 'export PATH="$PATH:/home/circleci/.node/corepack"' >> ~/.bashrc
-            source ~/.bashrc
             corepack enable
             corepack prepare pnpm@latest-8 --activate
             pnpm config set store-dir .pnpm-store
@@ -65,7 +62,7 @@ jobs:
             - dist
             - infrastructure/bin
   deploy:
-    executor: aws-cli/default
+    executor: default
     resource_class: small
     steps:
       - checkout
