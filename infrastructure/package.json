@@ -6,11 +6,10 @@
   },
   "scripts": {
     "clean": "rimraf bin && rimraf cdk.out",
-    "build": "pnpm run clean && tsc",
+    "build": "tsc && vite build",
     "watch": "tsc -w",
     "test": "pnpm run build && jest",
-    "diff": "pnpm run build && cdk diff",
-    "deploy": "pnpm run build && cdk bootstrap && cdk deploy -v --require-approval never"
+    "diff": "pnpm run build && cdk diff"
   },
   "devDependencies": {
     "@types/node": "^18.18.7",
