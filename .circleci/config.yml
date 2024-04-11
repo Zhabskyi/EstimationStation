@@ -12,9 +12,11 @@ commands:
   install-pnpm:
     steps:
       - run:
-          name: Install pnpm
+          name: Install pnpm package manager
           command: |
-            curl -fsSL https://get.pnpm.io/install.sh | sh -
+            corepack enable
+            corepack prepare pnpm@latest-8 --activate
+            pnpm config set store-dir .pnpm-store
   install-dependencies:
     steps:
       - run: pnpm install .
@@ -22,14 +24,17 @@ commands:
   cache-dependencies:
     steps:
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          name: Save pnpm Package Cache
+          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
           paths:
             - ./node_modules
             - ./infrastructure/node_modules
   restore-dependencies:
     steps:
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          name: Restore pnpm Package Cache
+          keys:
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
   build-app:
     steps:
       - run: pnpm run build
