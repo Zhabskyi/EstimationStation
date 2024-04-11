@@ -23,7 +23,7 @@ commands:
           name: Install dependencies
           command: |
             pnpm install
-            cd ./infrastructure && pnpm install
+            cd ./infrastructure && npm install
   cache-dependencies:
     steps:
       - save_cache:
@@ -40,10 +40,18 @@ commands:
             - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
   build-app:
     steps:
-      - run: pnpm run build
+      - run:
+          name: Build
+          command: pnpm run build::prod
+      - run:
+          name: Build CDK
+          working_directory: ./infrastructure
+          command: npm run build
   deploy-app:
     steps:
-      - run: cd ./infrastructure && pnpm run deploy
+      - run:
+        name: Deploy
+        command: cd ./infrastructure && npm run deploy
 
 jobs:
   build:
@@ -57,7 +65,7 @@ jobs:
       - cache-dependencies
       - build-app
       - persist_to_workspace:
-          root: ./
+          root: .
           paths:
             - dist
             - infrastructure/bin
