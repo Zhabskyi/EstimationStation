@@ -12,13 +12,10 @@ commands:
   install-dependencies:
     steps:
       - run:
-          name: Clear npm cache
-          command: npm cache clean --force
-      - run:
           name: Install dependencies
           command: |
             pnpm install
-            cd ./infrastructure && npm install
+            cd ./infrastructure && pnpm install
   cache-dependencies:
     steps:
       - save_cache:
@@ -41,12 +38,12 @@ commands:
       - run:
           name: Build CDK
           working_directory: ./infrastructure
-          command: npm run build
+          command: pnpm run build
   deploy-app:
     steps:
       - run:
           name: Deploy
-          command: cd ./infrastructure && npm run deploy
+          command: cd ./infrastructure && pnpm run deploy
 
 jobs:
   build:
