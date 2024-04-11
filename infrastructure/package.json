@@ -6,10 +6,10 @@
   },
   "scripts": {
     "clean": "rimraf bin && rimraf cdk.out",
-    "build": "npm run clean && tsc",
+    "build": "pnpm run clean && tsc",
     "watch": "tsc -w",
-    "test": "npm run build && jest",
-    "diff": "npm run build && cdk diff",
+    "test": "pnpm run build && jest",
+    "diff": "pnpm run build && cdk diff",
     "deploy": "cdk deploy -v --require-approval never"
   },
   "devDependencies": {
