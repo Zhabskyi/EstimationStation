@@ -43,6 +43,7 @@ jobs:
     resource_class: small
     steps:
       - checkout
+      - install-pnpm
       - restore-dependencies
       - install-dependencies
       - cache-dependencies
@@ -57,6 +58,7 @@ jobs:
     resource_class: small
     steps:
       - checkout
+      - install-pnpm
       - restore-dependencies
       - install-dependencies
       - cache-dependencies
