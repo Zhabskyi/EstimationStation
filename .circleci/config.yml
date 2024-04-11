@@ -20,10 +20,13 @@ commands:
   install-dependencies:
     steps:
       - run:
+        name: Clear npm cache
+        command: npm cache clean --force
+      - run:
           name: Install dependencies
           command: |
             pnpm install
-            cd ./infrastructure && npm install
+            cd ./infrastructure && npm ci
   cache-dependencies:
     steps:
       - save_cache:
