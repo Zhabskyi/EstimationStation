@@ -26,7 +26,7 @@ commands:
           name: Install dependencies
           command: |
             pnpm install
-            cd ./infrastructure && npm ci
+            cd ./infrastructure && npm install
   cache-dependencies:
     steps:
       - save_cache:
