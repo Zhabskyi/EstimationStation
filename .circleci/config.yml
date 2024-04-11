@@ -43,7 +43,7 @@ commands:
     steps:
       - run:
           name: List build directory
-          command: ls -la /home/circleci
+          command: cd ./infrastructure && ls -la /home/circleci/project
       - run:
           name: Deploy
           command: cd ./infrastructure && pnpm run deploy
