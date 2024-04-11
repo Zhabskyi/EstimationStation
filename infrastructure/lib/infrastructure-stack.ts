@@ -68,11 +68,6 @@ export class InfrastructureStack extends cdk.Stack {
     });
   }
 
-  /**
-   * Enables CORS access on the given bucket
-   *
-   * @memberof CxpInfrastructureStack
-   */
   enableCorsOnBucket = (bucket: s3.IBucket) => {
     const cfnBucket = bucket.node.findChild("Resource") as s3.CfnBucket;
     cfnBucket.addPropertyOverride("CorsConfiguration", {
