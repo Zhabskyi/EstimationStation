@@ -14,13 +14,17 @@ commands:
       - run:
           name: Install pnpm package manager
           command: |
+            npm install -g corepack
             corepack enable
             corepack prepare pnpm@latest-8 --activate
             pnpm config set store-dir .pnpm-store
   install-dependencies:
     steps:
-      - run: pnpm install .
-      - run: cd ./infrastructure && pnpm install .
+      - run:
+          name: Install dependencies
+          command: |
+            pnpm install
+            cd ./infrastructure && pnpm install
   cache-dependencies:
     steps:
       - save_cache:
