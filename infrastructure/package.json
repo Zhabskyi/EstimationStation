@@ -10,7 +10,7 @@
     "watch": "tsc -w",
     "test": "npm run build && jest",
     "diff": "npm run build && cdk diff",
-    "deploy": "npm run build && cdk deploy -v --require-approval never"
+    "deploy": "cdk deploy -v --require-approval never"
   },
   "devDependencies": {
     "@types/node": "^18.18.7",
