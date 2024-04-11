@@ -1,5 +1,6 @@
 {
-  "app": "npx ts-node bin/cxp-app.infrastructure.js",
+  "app": "npx ts-node --prefer-ts-exts lib/infrastructure.ts",
+  "versionReporting": false,
   "requireApproval": "never",
   "progress": "events"
 }
