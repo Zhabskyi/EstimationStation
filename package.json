@@ -8,7 +8,7 @@
     "dev": "vite",
     "build:vite": "vite build",
     "build:types": "tsc --project tsconfig.json --emitDeclarationOnly",
-    "build": "pnpm run build:vite && pnpm run build:types",
+    "build": "tsc && vite build",
     "clean": "rm -rf dist",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",

@@ -34,7 +34,7 @@ commands:
     steps:
       - run:
           name: Build
-          command: pnpm run build::prod
+          command: pnpm run build
       - run:
           name: Build CDK
           working_directory: ./infrastructure
