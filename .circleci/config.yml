@@ -6,7 +6,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/node:18
+      - image: cimg/node:18.20
 
 commands:
   install-pnpm:
