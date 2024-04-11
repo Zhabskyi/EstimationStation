@@ -50,8 +50,8 @@ commands:
   deploy-app:
     steps:
       - run:
-        name: Deploy
-        command: cd ./infrastructure && npm run deploy
+          name: Deploy
+          command: cd ./infrastructure && npm run deploy
 
 jobs:
   build:
