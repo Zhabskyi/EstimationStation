@@ -6,19 +6,14 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/node:21.7.3
+      - image: cimg/node:20.12.1
 
 commands:
-  install-pnpm:
-    steps:
-      - run:
-          name: Install pnpm package manager
-          command: |
-            corepack enable
-            corepack prepare pnpm@latest-8 --activate
-            pnpm config set store-dir .pnpm-store
   install-dependencies:
     steps:
+      - run:
+          name: Clear npm cache
+          command: npm cache clean --force
       - run:
           name: Install dependencies
           command: |
@@ -59,7 +54,6 @@ jobs:
     resource_class: small
     steps:
       - checkout
-      - install-pnpm
       - restore-dependencies
       - install-dependencies
       - cache-dependencies
@@ -74,7 +68,6 @@ jobs:
     resource_class: small
     steps:
       - checkout
-      - install-pnpm
       - restore-dependencies
       - install-dependencies
       - cache-dependencies
