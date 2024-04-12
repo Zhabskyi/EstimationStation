@@ -22,8 +22,8 @@ commands:
           name: Save pnpm Package Cache
           key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
           paths:
-            - ./node_modules
-            - ./infrastructure/node_modules
+            - .pnpm-store
+            - ./infrastructure/pnpm-store
   restore-dependencies:
     steps:
       - restore_cache:
@@ -43,7 +43,7 @@ commands:
     steps:
       - run:
           name: List build directory
-          command: cd ./infrastructure && ls -la /home/circleci/project
+          command: cd ./infrastructure && ls -la /home/circleci/project/dist
       - run:
           name: Deploy
           command: cd ./infrastructure && pnpm run deploy
