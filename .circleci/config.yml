@@ -43,7 +43,7 @@ commands:
     steps:
       - run:
           name: List build directory
-          command: cd ./infrastructure && ls -la /home/circleci/project/dist
+          command: cd ./infrastructure && ls -la /home/circleci/project
       - run:
           name: Deploy
           command: cd ./infrastructure && pnpm run deploy
@@ -72,7 +72,7 @@ jobs:
       - install-dependencies
       - cache-dependencies
       - attach_workspace:
-          at: ~/
+          at: .
       - aws-cli/setup
       - deploy-app
 
