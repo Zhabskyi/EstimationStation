@@ -62,6 +62,7 @@ jobs:
           root: .
           paths:
             - dist
+            - build
             - infrastructure/bin
   deploy:
     executor: default
