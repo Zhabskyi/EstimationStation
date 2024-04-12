@@ -6,7 +6,7 @@
   },
   "scripts": {
     "clean": "rimraf bin && rimraf cdk.out",
-    "build": "pnpm run build && tsc",
+    "build": "pnpm run clean && tsc",
     "watch": "tsc -w",
     "test": "pnpm run build && jest",
     "diff": "pnpm run build && cdk diff",
