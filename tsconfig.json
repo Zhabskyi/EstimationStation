@@ -16,7 +16,8 @@
     "noUnusedParameters": true,
     "declaration": true,
     "strict": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "build",
   },
   "include": ["src"],
   "exclude": [
