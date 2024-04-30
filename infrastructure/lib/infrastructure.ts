@@ -2,7 +2,6 @@
 import "source-map-support/register";
 import { App } from "aws-cdk-lib";
 import { StationInfrastructureStack } from "./infrastructure-stack";
-import appConfig from "./app.config.json";
 import { configurations } from "./app-config";
 
 const app = new App();
