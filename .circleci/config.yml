@@ -82,15 +82,62 @@ workflows:
   ci-main:
     jobs:
       - build:
+          context: app-dev
           filters:
             branches:
               only:
                 - main
       - deploy:
-          context: aws-account
+          context: app-dev
           requires:
             - build
           filters:
             branches:
               only:
                 - main
+    ci-dev:
+      jobs:
+        - build:
+          name: build [dev]
+          context: app-dev
+          filters:
+            branches:
+              ignore:
+                - master
+                - main
+        - deploy:
+          name: deploy [dev]
+          context: app-dev
+          requires:
+            - build
+    ci-prod-build-deploy:
+      jobs:
+        - build:
+            context: app-prod
+            filters:
+              tags:
+                only:
+                  - /^v(\d+\.)?(\d+\.)?(\*|\d+)$/
+              branches:
+                ignore: /.*/
+        - approve-deploy:
+            name: Approve promote to Prod
+            type: approval
+            filters:
+              tags:
+                only:
+                  - /^v(\d+\.)?(\d+\.)?(\*|\d+)$/
+              branches:
+                ignore: /.*/
+            requires:
+              - build
+        - deploy:
+          context: app-prod
+          filters:
+            tags:
+              only:
+                - /^v(\d+\.)?(\d+\.)?(\*|\d+)$/
+            branches:
+              ignore: /.*/
+            requires:
+              - Approve promote to Prod
