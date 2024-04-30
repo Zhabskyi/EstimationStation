@@ -12,7 +12,7 @@ import { CfnRole, Effect, PolicyStatement, ServicePrincipal } from "aws-cdk-lib/
 
 const appName = `${appConfig.appName}`;
 
-export class InfrastructureStack extends cdk.Stack {
+export class StationInfrastructureStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
